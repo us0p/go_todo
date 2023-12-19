@@ -1,0 +1,3 @@
+test database actions: cd ./database/ && rm -rf ../task.db && goose -dir ./migrations/ sqlite3 ../task.db up && go test
+test main functionality: rm -rf ./task.db && goose -dir ./database/migrations/ sqlite3 ./task.db up && go test
+
