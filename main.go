@@ -43,7 +43,7 @@ func main() {
     }
 }
 
-const UsageStrAddTask = "Usage: gotodo a -name <name> [-completed <true|false>]"
+const UsageStrAddTask = "Usage: go_todo a -name <name> [-completed <true|false>]"
 func addTask(db taskAction.DB, args []string) {
     if len(args) == 1 {
         fmt.Println(UsageStrAddTask)
@@ -87,7 +87,7 @@ func addTask(db taskAction.DB, args []string) {
     fmt.Printf("Task with ID: %d created!\n", task.ID)
 }
 
-const DefaultListUsageStr = "Usage: gotodo l [-sort <id|name>,<asc,desc>] [-completed <true|false>]"
+const DefaultListUsageStr = "Usage: go_todo l [-sort <id|name>,<asc,desc>] [-completed <true|false>]"
 func listTasks(db database.DB, args []string) {
     props := database.ListTaskProps{}
     optionValueMap, err := GetOptionValue(args, []string{"-sort", "-completed"})
@@ -128,7 +128,7 @@ func listTasks(db database.DB, args []string) {
     printTasksList(db, props)
 }
 
-const DefaultDeleteUsageStr = "Usage: gotodo d <...ids>"
+const DefaultDeleteUsageStr = "Usage: go_todo d <...ids>"
 func deleteTasks(db database.DB, args []string) {
     if len(args) == 1 {
         fmt.Println(DefaultDeleteUsageStr)
@@ -156,7 +156,7 @@ func deleteTasks(db database.DB, args []string) {
     fmt.Println(fmt.Sprintf("Deleted %d tasks.", deleteCount))
 }
 
-const DefaultUpdateUsageStr = "Usage: gotodo u <id> <-name string>|<-completed true|false>"
+const DefaultUpdateUsageStr = "Usage: go_todo u <id> <-name string>|<-completed true|false>"
 func updateTask(db database.DB, args []string) {
     if len(args) < 2 {
         fmt.Println(DefaultUpdateUsageStr)
@@ -219,7 +219,7 @@ func updateTask(db database.DB, args []string) {
     fmt.Println(fmt.Sprintf("Task %d updated", updatedTask.ID))
 }
 
-const DefaultHelpUsageStr = "Usage: gotodo help <a|l|d|u>"
+const DefaultHelpUsageStr = "Usage: go_todo help <a|l|d|u>"
 func help(args []string) {
     if len(args) == 1 {
         fmt.Println(DefaultHelpUsageStr)
@@ -292,7 +292,7 @@ func GetOptionValue(args []string, allowedParameters []string) (map[string]strin
 }
 
 func printHelp() {
-    fmt.Printf("Usage: gotodo <option>\n\n")
+    fmt.Printf("Usage: go_todo <option>\n\n")
 
     fmt.Println("a - Add tasks")
     fmt.Println("l - List tasks")
@@ -301,5 +301,5 @@ func printHelp() {
 
     fmt.Printf("\n")
 
-    fmt.Println("For more information about a option: gotodo help <a|l|d|u>")
+    fmt.Println("For more information about a option: go_todo help <a|l|d|u>")
 }
